@@ -1,0 +1,26 @@
+[
+  {
+    "id": "OPERATION_SENDUSERMESSAGES_COUNT",
+    "code": "10-001",
+    "component": "SyncAgent",
+    "metricKey": "SN-USERUPDATE-MSG"
+  },
+  {
+    "id": "OPERATION_SENDACCOUNTMESSAGES_COUNT",
+    "code": "11-001",
+    "component": "SyncAgent",
+    "metricKey": "SN-ACCOUNTUPDATE-MSG"
+  },
+  {
+    "id": "OPERATION_CONNECTORSTATUS_COUNT",
+    "code": "19-001",
+    "component": "SyncAgent",
+    "metricKey": "CONNECTORSTATUS-PING"
+  },
+  {
+    "id": "SERVICE_API_CALL",
+    "code": "80-001",
+    "component": "ServiceClient",
+    "metricKey": "SVC-APICALL"
+  }
+]

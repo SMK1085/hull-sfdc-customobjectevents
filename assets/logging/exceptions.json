@@ -1,0 +1,68 @@
+[
+  {
+    "id": "OPERATION_SENDUSERMESSAGES_UNHANDLED",
+    "code": "10-001",
+    "component": "SyncAgent",
+    "message": "Failed to process user messages due to an unhandled error."
+  },
+  {
+    "id": "OPERATION_SENDUSERMESSAGES_GETRANGE",
+    "code": "10-002",
+    "component": "SyncAgent",
+    "message": "Failed to read range from spreadsheet."
+  },
+  {
+    "id": "OPERATION_SENDUSERMESSAGES_GETSPREADHSHEET",
+    "code": "10-003",
+    "component": "SyncAgent",
+    "message": "Failed to read spreadsheet information."
+  },
+  {
+    "id": "OPERATION_SENDUSERMESSAGES_RESIZESHEET",
+    "code": "10-004",
+    "component": "SyncAgent",
+    "message": "Failed to read resize rows for sheet."
+  },
+  {
+    "id": "OPERATION_SENDUSERMESSAGES_WRITERANGE",
+    "code": "10-005",
+    "component": "SyncAgent",
+    "message": "Failed to write range to spreadsheet."
+  },
+  {
+    "id": "OPERATION_SENDACCOUNTMESSAGES_UNHANDLED",
+    "code": "11-001",
+    "component": "SyncAgent",
+    "message": "Failed to process account messages due to an unhandled error."
+  },
+  {
+    "id": "OPERATION_SENDACCOUNTMESSAGES_GETRANGE",
+    "code": "11-002",
+    "component": "SyncAgent",
+    "message": "Failed to read range from spreadsheet."
+  },
+  {
+    "id": "OPERATION_SENDACCOUNTMESSAGES_GETSPREADHSHEET",
+    "code": "11-003",
+    "component": "SyncAgent",
+    "message": "Failed to read spreadsheet information."
+  },
+  {
+    "id": "OPERATION_SENDACCOUNTMESSAGES_RESIZESHEET",
+    "code": "11-004",
+    "component": "SyncAgent",
+    "message": "Failed to read resize rows for sheet."
+  },
+  {
+    "id": "OPERATION_SENDACCOUNTMESSAGES_WRITERANGE",
+    "code": "11-005",
+    "component": "SyncAgent",
+    "message": "Failed to write range to spreadsheet."
+  },
+  {
+    "id": "OPERATION_CONNECTORSTATUS_UNHANDLED",
+    "code": "19-001",
+    "component": "SyncAgent",
+    "message": "Failed to determine the status of the connector due to an unhandled error."
+  }
+]

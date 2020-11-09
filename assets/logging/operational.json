@@ -1,0 +1,98 @@
+[
+  {
+    "id": "OPERATION_SENDUSERMESSAGES_START",
+    "code": "10-001",
+    "component": "SyncAgent",
+    "message": "Entered sending user messages..."
+  },
+  {
+    "id": "OPERATION_SENDUSERMESSAGES_SUCCESS",
+    "code": "10-002",
+    "component": "SyncAgent",
+    "message": "Successfully sent user messages."
+  },
+  {
+    "id": "OPERATION_SENDUSERMESSAGES_NOOP",
+    "code": "10-003",
+    "component": "SyncAgent",
+    "message": "Detected no-op for sending user messages. None of the messages satisfy the filtering criteria."
+  },
+  {
+    "id": "OPERATION_SENDUSERMESSAGES_INVALIDCONFIG",
+    "code": "10-004",
+    "component": "SyncAgent",
+    "message": "The connector has an invalid or insufficient configuration, please check the settings. No data will be sent to the service."
+  },
+  {
+    "id": "OPERATION_SENDUSERMESSAGESBATCH_START",
+    "code": "10-005",
+    "component": "SyncAgent",
+    "message": "Entered sending user messages..."
+  },
+  {
+    "id": "OPERATION_SENDUSERMESSAGES_RESIZESHEET_START",
+    "code": "10-006",
+    "component": "SyncAgent",
+    "message": "Resizing sheet since new data would cause overflow on grid."
+  },
+  {
+    "id": "OPERATION_SENDACCOUNTMESSAGES_START",
+    "code": "11-001",
+    "component": "SyncAgent",
+    "message": "Entered sending account messages..."
+  },
+  {
+    "id": "OPERATION_SENDACCOUNTMESSAGES_SUCCESS",
+    "code": "11-002",
+    "component": "SyncAgent",
+    "message": "Successfully sent account messages."
+  },
+  {
+    "id": "OPERATION_SENDACCOUNTMESSAGES_NOOP",
+    "code": "11-003",
+    "component": "SyncAgent",
+    "message": "Detected no-op for sending account messages. None of the messages satisfy the filtering criteria."
+  },
+  {
+    "id": "OPERATION_SENDACCOUNTMESSAGES_INVALIDCONFIG",
+    "code": "11-004",
+    "component": "SyncAgent",
+    "message": "The connector has an invalid or insufficient configuration, please check the settings. No data will be sent to the service."
+  },
+  {
+    "id": "OPERATION_SENDACCOUNTMESSAGESBATCH_START",
+    "code": "11-005",
+    "component": "SyncAgent",
+    "message": "Entered sending account messages..."
+  },
+  {
+    "id": "OPERATION_SENDACCOUNTMESSAGES_RESIZESHEET_START",
+    "code": "11-006",
+    "component": "SyncAgent",
+    "message": "Resizing sheet since new data would cause overflow on grid."
+  },
+  {
+    "id": "OPERATION_CONNECTORSTATUS_START",
+    "code": "19-001",
+    "component": "SyncAgent",
+    "message": "Entered checking status of connector..."
+  },
+  {
+    "id": "OPERATION_CONNECTORSTATUS_SUCCESS",
+    "code": "19-002",
+    "component": "SyncAgent",
+    "message": "Successfully checked status of connect."
+  },
+  {
+    "id": "OPERATION_CONNECTORSTATUS_HULLAPISTART",
+    "code": "19-003",
+    "component": "SyncAgent",
+    "message": "Sending connector status to Hull API..."
+  },
+  {
+    "id": "OPERATION_CONNECTORSTATUS_HULLAPISUCCESS",
+    "code": "19-004",
+    "component": "SyncAgent",
+    "message": "Successfully sent connector status to Hull API."
+  }
+]

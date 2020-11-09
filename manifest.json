@@ -1,0 +1,206 @@
+{
+  "name": "Salesforce Custom Objects from Hull Events",
+  "tags": [
+    "outgoing",
+    "oneColumn",
+    "batch",
+    "smart-notifier"
+  ],
+  "description": "Send Hull events to Salesforce as a custom object",
+  "readme": "readme.md",
+  "tabs": [],
+  "version": "1.0.0",
+  "source": "salesforce",
+  "logo": "logo.png",
+  "picture": "picture.png",
+  "ui": false,
+  "settings": [],
+  "private_settings": [
+    {
+      "name": "auth_client_id",
+      "type": "string",
+      "title": "Client ID",
+      "description": "The Client ID of your OAuth Application."
+    },
+    {
+      "name": "auth_client_secret",
+      "type": "string",
+      "title": "Client Secret",
+      "description": "The Client Secret of your OAuth Application."
+    },
+    {
+      "name": "auth_loginurl",
+      "type": "string",
+      "title": "Login Url",
+      "description": "Use 'https://login.salesforce.com' to connect to your production environment. Refer to the docs on instructions how to connect to a sandbox environment.",
+      "default": "https://login.salesforce.com"
+    },
+    {
+      "name": "service_api_version",
+      "type": "string",
+      "title": "The Salesforce API version to use.",
+      "enum": ["49.0", "48.0", "47.0", "46.0", "45.0"],
+      "default": "49.0"
+    },
+    {
+      "name": "disable_sync",
+      "title": "Disable synchronization",
+      "type": "boolean",
+      "default": false,
+      "format": "hidden"
+    },
+    {
+      "name": "hull_event_id",
+      "type": "string",
+      "title": "Hull Event ID",
+      "description": "The event property to use as identifier, defaults to `event_id`.",
+      "default": "event_id"
+    },
+    {
+      "name": "hull_events",
+      "type": "array",
+      "format": "event",
+      "title": "Hull Events",
+      "description": "The user events to synchronize to the Custom Object in Salesforce."
+    },
+    {
+      "name": "salesforce_customobject",
+      "title": "Custom Object",
+      "description": "Select the Custom Object to synchronize above events to.",
+      "type": "string",
+      "format": "select",
+      "options": {
+        "loadOptions": "/meta/customobjects/outgoing"
+      }
+    },
+    {
+      "name": "salesforce_customobject_id",
+      "title": "Custom Object ID",
+      "description": "Select the unique Field on your Custom Object for deduplication purposes.",
+      "type": "string",
+      "format": "select",
+      "options": {
+        "loadOptions": "/meta/fieldsunique/outgoing"
+      }
+    },
+    {
+      "name": "user_synchronized_segments",
+      "title": "User Filter",
+      "description": "Send Hull Users when they are part of one of these segments.",
+      "type": "array",
+      "format": "segment",
+      "default": []
+    },
+    {
+      "name": "skip_objects_with_no_reference",
+      "title": "Skip without reference",
+      "description": "Skip synchronization if custom object has no reference to another standard object in Salesforce",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "user_references_outgoing",
+      "title": "Object References",
+      "description": "Define the references of the custom object to standard objects in Salesforce.",
+      "type": "array",
+      "format": "traitMapping",
+      "options": {
+        "direction": "outgoing",
+        "showOverwriteToggle": false,
+        "placeholder": "Salesforce Field",
+        "allowCreate": false,
+        "loadOptions": "/meta/fieldsrefs/outgoing"
+      }
+    },
+    {
+      "name": "user_event_properties",
+      "title": "Field Mappings",
+      "description": "Define the event data and user attributes to map to the custom object.",
+      "type": "array",
+      "format": "table",
+      "items": {
+        "type": "object",
+        "properties": {
+          "hull": {
+            "title": "Hull Data",
+            "type": "string"
+          },
+          "service": {
+            "title": "Salesforce Field",
+            "type": "string",
+            "format": "select",
+            "options": {
+              "allowCreate": false,
+              "loadOptions": "/meta/fieldsupdatable/outgoing",
+              "placeholder": "Salesforce Field"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "json": [{
+    "name": "oauth",
+    "format": "oauth",
+    "type": "string",
+    "url": "/oauth"
+  }],
+  "schedules": [{
+    "url": "/status",
+    "type": "interval",
+    "value": "30"
+  }],
+  "subscriptions": [{
+    "url": "/smart-notifier",
+    "conditions": {
+      "channels": {
+        "only": ["user:update"]
+      },
+      "segments": {
+        "user:update": [
+          "private_settings.user_synchronized_segments"
+        ]
+      },
+      "event-whitelist": {
+        "user:update": [
+          "private_settings.hull_events"
+        ]
+      }
+    },
+    "channels": [{
+      "channel": "user:update",
+      "handler": "user_update"
+    }]
+  }],
+  "settings_sections": [{
+    "title": "Connection",
+    "description": "Configure the parameters to establish a connection to your Salesforce Instance.",
+      "properties": [
+        "private_settings.auth_client_id",
+        "private_settings.auth_client_secret",
+        "private_settings.auth_loginurl",
+        "private_settings.service_api_version",
+        "json.oauth"
+      ]
+    },
+    {
+      "title": "Object Selection",
+      "description": "Define which events to synchronize and how to resolve them to custom objects.",
+      "properties": [
+        "private_settings.hull_events",
+        "private_settings.salesforce_customobject",
+        "private_settings.salesforce_customobject_id",
+        "private_settings.hull_event_id"
+      ]
+    },
+    {
+      "title": "Object Mapping",
+      "description": "Define how the custom object is referenced to standard Salesforce objects and how attributes are mapped.",
+      "properties": [
+        "private_settings.user_references_outgoing",
+        "private_settings.skip_objects_with_no_reference",
+        "private_settings.user_event_properties"
+      ]
+    }
+  ]
+}
